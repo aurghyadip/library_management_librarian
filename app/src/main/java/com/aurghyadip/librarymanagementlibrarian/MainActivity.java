@@ -21,9 +21,6 @@ import com.google.firebase.crash.FirebaseCrash;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
-    private ScanFragment scanFragment;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private View navHeader;
@@ -72,10 +69,10 @@ public class MainActivity extends AppCompatActivity
         devWatermark.append(devText);
         /* --------------------------- */
 
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        scanFragment = new ScanFragment();
+        ScanFragment scanFragment = new ScanFragment();
         fragmentTransaction.add(R.id.fragment_container, scanFragment);
         fragmentTransaction.commit();
     }
