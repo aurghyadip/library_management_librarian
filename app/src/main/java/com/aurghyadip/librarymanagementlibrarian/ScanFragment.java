@@ -20,11 +20,11 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class ScanFragment extends Fragment {
 
-    Button scanBooks;
-    Button scanIsbn;
-    TextInputEditText isbn;
+    private Button scanBooks;
+    private Button scanIsbn;
+    private TextInputEditText isbn;
 
-    AwesomeValidation awesomeValidation;
+    private AwesomeValidation awesomeValidation;
 
     @Nullable
     @Override

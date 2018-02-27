@@ -21,12 +21,12 @@ import com.google.firebase.crash.FirebaseCrash;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
-    ScanFragment scanFragment;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+    private ScanFragment scanFragment;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    View navHeader;
+    private View navHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

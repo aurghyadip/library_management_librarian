@@ -19,17 +19,17 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class BookDetailsActivity extends AppCompatActivity {
-    FirebaseDatabase database;
-    DatabaseReference mRef;
+    private FirebaseDatabase database;
+    private DatabaseReference mRef;
 
-    String isbn;
+    private String isbn;
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
-    TextView authorView;
-    TextView titleView;
-    TextView descriptionView;
-    TextView copiesView;
+    private TextView authorView;
+    private TextView titleView;
+    private TextView descriptionView;
+    private TextView copiesView;
     int copies;
 
     Button depositBtn;

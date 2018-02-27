@@ -28,22 +28,22 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class EditBookFragment extends Fragment {
 
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
-    AwesomeValidation awesomeValidationIsbn;
-    AwesomeValidation awesomeValidationEditBook;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private AwesomeValidation awesomeValidationIsbn;
+    private AwesomeValidation awesomeValidationEditBook;
 
-    String isbnNumber;
+    private String isbnNumber;
 
-    Button searchBtn;
-    Button editBookDetailsBtn;
-    Button scanIsbnBtn;
+    private Button searchBtn;
+    private Button editBookDetailsBtn;
+    private Button scanIsbnBtn;
 
-    TextInputEditText isbn;
-    TextInputEditText bookTitle;
-    TextInputEditText bookAuthor;
-    TextInputEditText bookDescription;
-    TextInputEditText bookCopies;
+    private TextInputEditText isbn;
+    private TextInputEditText bookTitle;
+    private TextInputEditText bookAuthor;
+    private TextInputEditText bookDescription;
+    private TextInputEditText bookCopies;
 
     @Nullable
     @Override

@@ -22,11 +22,11 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    EditText emailField;
-    EditText passwordField;
-    AwesomeValidation awesomeValidation;
+    private EditText emailField;
+    private EditText passwordField;
+    private AwesomeValidation awesomeValidation;
 
-    Button signInBtn;
+    private Button signInBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
