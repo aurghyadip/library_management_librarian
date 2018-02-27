@@ -18,22 +18,22 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class DepositActivity extends AppCompatActivity {
-    TextView studentNameView;
-    TextView studentIdView;
-    TextView bookFineView;
-    TextView bookRentDateView;
+    private TextView studentNameView;
+    private TextView studentIdView;
+    private TextView bookFineView;
+    private TextView bookRentDateView;
 
-    Button payFineBtn;
+    private Button payFineBtn;
 
-    EditText studentIdField;
-    Button searchStudentBtn;
+    private EditText studentIdField;
+    private Button searchStudentBtn;
 
-    String isbn;
-    String studentId;
+    private String isbn;
+    private String studentId;
 
-    DatabaseReference studentRef;
-    DatabaseReference rentRef;
-    DatabaseReference booksRef;
+    private DatabaseReference studentRef;
+    private DatabaseReference rentRef;
+    private DatabaseReference booksRef;
 
     int copies;
 
