@@ -27,9 +27,10 @@ public class BookDetailsActivity extends AppCompatActivity {
     private TextView titleView;
     private TextView descriptionView;
     private TextView copiesView;
-    int copies;
+    private int copies;
 
     private Button depositBtn;
+    private Button rentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         descriptionView = findViewById(R.id.book_description);
         copiesView = findViewById(R.id.book_copies);
         depositBtn = findViewById(R.id.deposit_book_btn);
+        rentBtn = findViewById(R.id.rent_book_btn);
 
         isbn = getIntent().getStringExtra("isbn");
 
@@ -92,6 +94,14 @@ public class BookDetailsActivity extends AppCompatActivity {
                 Intent intent = new Intent(BookDetailsActivity.this, DepositActivity.class);
                 intent.putExtra("isbn", isbn);
                 intent.putExtra("copies", copies);
+                startActivity(intent);
+            }
+        });
+        rentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookDetailsActivity.this, RentActivity.class);
+                intent.putExtra("isbn", isbn);
                 startActivity(intent);
             }
         });
