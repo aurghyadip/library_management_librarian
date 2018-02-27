@@ -29,7 +29,7 @@ public class BookDetailsActivity extends AppCompatActivity {
     private TextView copiesView;
     int copies;
 
-    Button depositBtn;
+    private Button depositBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

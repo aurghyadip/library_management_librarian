@@ -35,7 +35,7 @@ public class DepositActivity extends AppCompatActivity {
     private DatabaseReference rentRef;
     private DatabaseReference booksRef;
 
-    int copies;
+    private int copies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
