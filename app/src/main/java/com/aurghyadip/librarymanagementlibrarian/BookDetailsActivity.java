@@ -19,12 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class BookDetailsActivity extends AppCompatActivity {
-    private FirebaseDatabase database;
     private DatabaseReference mRef;
 
     private String isbn;
-
-    private Toolbar toolbar;
 
     private TextView authorView;
     private TextView titleView;
@@ -39,7 +36,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
 
-        toolbar = findViewById(R.id.toolbar_book_details);
+        Toolbar toolbar = findViewById(R.id.toolbar_book_details);
         setSupportActionBar(toolbar);
 
         authorView = findViewById(R.id.book_author);
@@ -50,7 +47,7 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         isbn = getIntent().getStringExtra("isbn");
 
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         mRef = database.getReference("Books");
     }
 
