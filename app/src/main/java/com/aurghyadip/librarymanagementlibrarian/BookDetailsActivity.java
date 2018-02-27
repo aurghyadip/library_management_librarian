@@ -1,10 +1,12 @@
 package com.aurghyadip.librarymanagementlibrarian;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,34 +19,37 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class BookDetailsActivity extends AppCompatActivity {
-    FirebaseDatabase database;
-    DatabaseReference mRef;
+    private DatabaseReference mRef;
 
-    String isbn;
+    private String isbn;
 
-    Toolbar toolbar;
+    private TextView authorView;
+    private TextView titleView;
+    private TextView descriptionView;
+    private TextView copiesView;
+    private int copies;
 
-    TextView authorView;
-    TextView titleView;
-    TextView descriptionView;
-    TextView copiesView;
+    private Button depositBtn;
+    private Button rentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
 
-        toolbar = findViewById(R.id.toolbar_book_details);
+        Toolbar toolbar = findViewById(R.id.toolbar_book_details);
         setSupportActionBar(toolbar);
 
         authorView = findViewById(R.id.book_author);
         titleView = findViewById(R.id.book_title);
         descriptionView = findViewById(R.id.book_description);
         copiesView = findViewById(R.id.book_copies);
+        depositBtn = findViewById(R.id.deposit_book_btn);
+        rentBtn = findViewById(R.id.rent_book_btn);
 
         isbn = getIntent().getStringExtra("isbn");
 
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         mRef = database.getReference("Books");
     }
 
@@ -55,7 +60,6 @@ public class BookDetailsActivity extends AppCompatActivity {
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //TODO: Integrate Google Books API to fetch data
                 if (dataSnapshot.hasChild(isbn)) {
                     Book book = dataSnapshot.child(isbn).getValue(Book.class);
 
@@ -63,7 +67,8 @@ public class BookDetailsActivity extends AppCompatActivity {
                         titleView.setText(book.getTitle());
                         authorView.setText(book.getAuthor());
                         descriptionView.setText(book.getDescription());
-                        copiesView.setText(book.getCopies());
+                        copies = book.getCopies();
+                        copiesView.setText(String.valueOf(book.getCopies()));
                     }
                 } else {
                     LinearLayout hasBookDetails = findViewById(R.id.has_book_details_layout);
@@ -80,6 +85,24 @@ public class BookDetailsActivity extends AppCompatActivity {
                 Log.w("TAG", "loadPost:onCancelled", databaseError.toException());
                 Toast.makeText(BookDetailsActivity.this, "Failed to load book.",
                         Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        depositBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookDetailsActivity.this, DepositActivity.class);
+                intent.putExtra("isbn", isbn);
+                intent.putExtra("copies", copies);
+                startActivity(intent);
+            }
+        });
+        rentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookDetailsActivity.this, RentActivity.class);
+                intent.putExtra("isbn", isbn);
+                startActivity(intent);
             }
         });
     }

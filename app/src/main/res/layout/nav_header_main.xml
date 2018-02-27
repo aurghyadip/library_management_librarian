@@ -31,5 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="android.studio@android.com" />
+    <TextView
+        android:id="@+id/dev_watermark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/development_build_watermark"/>
 
 </LinearLayout>

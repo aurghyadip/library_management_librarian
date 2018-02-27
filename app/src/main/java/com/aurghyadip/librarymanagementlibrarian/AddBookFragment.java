@@ -31,22 +31,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddBookFragment extends Fragment {
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
-    VolumeInfo volumeInfo;
+    private VolumeInfo volumeInfo;
 
-    AwesomeValidation awesomeValidation;
+    private AwesomeValidation awesomeValidation;
 
-    TextInputEditText isbn;
-    TextInputEditText bookTitle;
-    TextInputEditText bookAuthor;
-    TextInputEditText bookDescription;
-    TextInputEditText bookCopies;
+    private TextInputEditText isbn;
+    private TextInputEditText bookTitle;
+    private TextInputEditText bookAuthor;
+    private TextInputEditText bookDescription;
+    private TextInputEditText bookCopies;
 
-    Button addBookBtn;
-    Button searchBookBtn;
-    Button scanIsbnBtn;
+    private Button addBookBtn;
+    private Button searchBookBtn;
+    private Button scanIsbnBtn;
 
     @Nullable
     @Override
@@ -116,7 +116,7 @@ public class AddBookFragment extends Fragment {
                                         bookTitle.getText().toString(),
                                         bookAuthor.getText().toString(),
                                         bookDescription.getText().toString(),
-                                        bookCopies.getText().toString()
+                                        Integer.valueOf(bookCopies.getText().toString())
                                 );
                                 databaseReference.child(isbn.getText().toString()).setValue(newBook);
                                 //TODO: Add navigation back to show that the data has been entered.

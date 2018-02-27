@@ -54,4 +54,5 @@
     <string name="menu_title_profile">Profile</string>
     <string name="sign_out_menu">Sign Out</string>
     <string name="scan_isbn_btn">Scan ISBN</string>
+    <string name="development_build_watermark">Development Build version</string>
 </resources>

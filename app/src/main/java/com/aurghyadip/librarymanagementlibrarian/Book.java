@@ -5,12 +5,12 @@ public class Book {
     public String title;
     public String author;
     public String description;
-    public String copies;
+    public int copies;
 
     public Book() {
     }
 
-    public Book(String title, String author, String description, String copies) {
+    public Book(String title, String author, String description, int copies) {
         this.title = title;
         this.author = author;
         this.description = description;
@@ -29,7 +29,7 @@ public class Book {
         return description;
     }
 
-    public String getCopies() {
+    public int getCopies() {
         return copies;
     }
 }

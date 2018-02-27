@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.aurghyadip.librarymanagementlibrarian.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.aurghyadip.librarymanagementlibrarian.BookDetailsActivity"
+            android:name=".BookDetailsActivity"
             android:label="@string/title_book_details" />
 
         <meta-data
@@ -27,7 +27,7 @@
             android:value="b6498ddd91f0155ab9597f4ed7da55959bbdc3b0" />
 
         <activity
-            android:name="com.aurghyadip.librarymanagementlibrarian.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -37,6 +37,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RentActivity" />
+        <activity android:name=".DepositActivity"></activity>
     </application>
 
 </manifest>
