@@ -33,7 +33,9 @@ public class DepositActivity extends AppCompatActivity {
 
     DatabaseReference studentRef;
     DatabaseReference rentRef;
+    DatabaseReference booksRef;
 
+    int copies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +55,11 @@ public class DepositActivity extends AppCompatActivity {
         searchStudentBtn = findViewById(R.id.deposit_search_student_btn);
 
         isbn = getIntent().getStringExtra("isbn");
+        copies = getIntent().getIntExtra("copies", copies); //TODO: Remove this and add more reliable solultion
 
         studentRef = FirebaseDatabase.getInstance().getReference("Students");
         rentRef = FirebaseDatabase.getInstance().getReference("Rent");
+        booksRef = FirebaseDatabase.getInstance().getReference("Books");
 
     }
 
@@ -98,15 +102,25 @@ public class DepositActivity extends AppCompatActivity {
             }
         });
 
-        
+        payFineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rentRef.child(studentId).child(isbn).removeValue();
+                booksRef.child(isbn).child("copies").setValue(copies + 1);
+                Toast.makeText(DepositActivity.this, "Book has been successfully deposited", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+
     }
 
     private void viewRentData(final String stId) {
-        rentRef.addValueEventListener(new ValueEventListener() {
+        rentRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChild(stId)) {
-                    if(dataSnapshot.child(stId).hasChild(isbn)) {
+                if (dataSnapshot.hasChild(stId)) {
+                    if (dataSnapshot.child(stId).hasChild(isbn)) {
                         String rentDate = dataSnapshot.child(stId).child(isbn).getValue(String.class);
                         RentDeposit depositFunctions = new RentDeposit();
                         int fine = depositFunctions.getFine(rentDate);

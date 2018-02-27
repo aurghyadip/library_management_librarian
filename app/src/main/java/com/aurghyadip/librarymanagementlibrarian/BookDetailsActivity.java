@@ -1,10 +1,12 @@
 package com.aurghyadip.librarymanagementlibrarian;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,9 @@ public class BookDetailsActivity extends AppCompatActivity {
     TextView titleView;
     TextView descriptionView;
     TextView copiesView;
+    int copies;
+
+    Button depositBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         titleView = findViewById(R.id.book_title);
         descriptionView = findViewById(R.id.book_description);
         copiesView = findViewById(R.id.book_copies);
+        depositBtn = findViewById(R.id.deposit_book_btn);
 
         isbn = getIntent().getStringExtra("isbn");
 
@@ -55,7 +61,6 @@ public class BookDetailsActivity extends AppCompatActivity {
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //TODO: Integrate Google Books API to fetch data
                 if (dataSnapshot.hasChild(isbn)) {
                     Book book = dataSnapshot.child(isbn).getValue(Book.class);
 
@@ -63,6 +68,7 @@ public class BookDetailsActivity extends AppCompatActivity {
                         titleView.setText(book.getTitle());
                         authorView.setText(book.getAuthor());
                         descriptionView.setText(book.getDescription());
+                        copies = book.getCopies();
                         copiesView.setText(String.valueOf(book.getCopies()));
                     }
                 } else {
@@ -80,6 +86,16 @@ public class BookDetailsActivity extends AppCompatActivity {
                 Log.w("TAG", "loadPost:onCancelled", databaseError.toException());
                 Toast.makeText(BookDetailsActivity.this, "Failed to load book.",
                         Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        depositBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookDetailsActivity.this, DepositActivity.class);
+                intent.putExtra("isbn", isbn);
+                intent.putExtra("copies", copies);
+                startActivity(intent);
             }
         });
     }
