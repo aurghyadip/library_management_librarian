@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_signout:
                 FirebaseAuth.getInstance().signOut();
                 break;
+            default:
+                break;
+
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
