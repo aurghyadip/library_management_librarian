@@ -26,8 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordField;
     private AwesomeValidation awesomeValidation;
 
-    private Button signInBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         emailField = findViewById(R.id.email_prompt);
         passwordField = findViewById(R.id.password_prompt);
 
-        signInBtn = findViewById(R.id.sign_in_btn);
+        Button signInBtn = findViewById(R.id.sign_in_btn);
 
         // Validation rules
         awesomeValidation.addValidation(emailField, Patterns.EMAIL_ADDRESS, getString(R.string.error_invalid_email));
