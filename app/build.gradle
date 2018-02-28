@@ -21,10 +21,10 @@ android {
         applicationId "com.aurghyadip.libararymanagementlibrarian"
         minSdkVersion 23
         targetSdkVersion 26
-        versionCode 5
-        versionName '0.5'
+        versionCode 6
+        versionName '1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionNameSuffix 'alpha'
+        versionNameSuffix 'beta'
     }
     buildTypes {
         release {
