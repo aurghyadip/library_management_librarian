@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -21,8 +23,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class ScanFragment extends Fragment {
 
     private Button scanBooks;
-    private Button scanIsbn;
-    private TextInputEditText isbn;
+    private EditText isbn;
 
     private AwesomeValidation awesomeValidation;
 
@@ -32,7 +33,7 @@ public class ScanFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_scan, container, false);
         scanBooks = rootView.findViewById(R.id.search_books);
-        scanIsbn = rootView.findViewById(R.id.barcode_scan);
+        Button scanIsbn = rootView.findViewById(R.id.barcode_scan);
         isbn = rootView.findViewById(R.id.book_search_field);
 
         //Awesome validation block
@@ -45,6 +46,15 @@ public class ScanFragment extends Fragment {
                 scanFromFragment();
             }
         });
+        /* For Development Builds only */
+        TextView devWatermark = rootView.findViewById(R.id.developer_watermark);
+
+        int versionCode = BuildConfig.VERSION_CODE;
+        String versionName = BuildConfig.VERSION_NAME;
+
+        String devText = String.valueOf(versionCode) + "." + versionName;
+        devWatermark.append(devText);
+        /* --------------------------- */
 
         return rootView;
     }

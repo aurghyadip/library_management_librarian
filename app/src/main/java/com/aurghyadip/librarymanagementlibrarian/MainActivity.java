@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private View navHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,21 +52,10 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if(mAuth.getCurrentUser() != null) {
-            navHeader = navigationView.getHeaderView(0);
-            // navHeader = navigationView.inflateHeaderView(R.layout.nav_header_main);
+            View navHeader = navigationView.getHeaderView(0);
             TextView userEmailNavHeader = navHeader.findViewById(R.id.user_email_nav_header);
             userEmailNavHeader.setText(mAuth.getCurrentUser().getEmail());
         }
-
-        /* For Development Builds only */
-        TextView devWatermark = navHeader.findViewById(R.id.dev_watermark);
-
-        int versionCode = BuildConfig.VERSION_CODE;
-        String versionName = BuildConfig.VERSION_NAME;
-
-        String devText = " " + String.valueOf(versionCode) + " " + versionName;
-        devWatermark.append(devText);
-        /* --------------------------- */
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

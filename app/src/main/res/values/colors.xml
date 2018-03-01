@@ -5,6 +5,7 @@
     <color name="colorAccent">#00B0FF</color>
     <color name="colorBackground">#F2F2F2</color>
     <color name="colorLight">#F2F2F2</color>
+    <color name="colorLightTransparent">#60F2F2F2</color>
     <color name="colorSecondary">#FFCA28</color>
     <color name="colorForeground">#000000</color>
 </resources>
